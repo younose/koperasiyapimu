@@ -1,0 +1,5 @@
+// ==== Laravel 10 : app/Http/Kernel.php ====
+// Tambahkan ke dalam array  protected $middlewareAliases = [ ... ];
+'admin'  => \App\Http\Middleware\EnsureAdmin::class,
+'member' => \App\Http\Middleware\EnsureMember::class,
+'kauth'  => \App\Http\Middleware\EnsureLogin::class,
