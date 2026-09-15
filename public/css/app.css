@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 *{box-sizing:border-box}
+svg{width:18px;height:18px;flex-shrink:0}
 :root{--ink:#16211c;--muted:#5f6f66;--primary:#15503c;--primary-700:#0f3d2c;--primary-50:#e8f1ec;
 --gold:#a9740c;--gold-50:#f8efdd;--canvas:#eef1ee;--surface:#fff;--border:#e2e7e2;--danger:#b3261e;--ok:#1f7a4d;--blue:#215e7c}
 body{margin:0;font-family:'Plus Jakarta Sans',system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--canvas);font-size:14px;line-height:1.45}
@@ -86,6 +87,7 @@ input:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--
 .mhead h3{margin:0;font-size:16px;font-weight:700}
 .mbody{padding:18px 20px}.mfoot{display:flex;justify-content:flex-end;gap:9px;padding:0 20px 18px}
 .reminder-ic{width:48px;height:48px;border-radius:50%;background:var(--gold-50);color:var(--gold);display:grid;place-items:center;margin:0 auto 10px}
+.reminder-ic svg{width:24px;height:24px}
 .mlist{list-style:none;margin:12px 0 0;padding:0}
 .mlist li{display:flex;justify-content:space-between;padding:9px 12px;border:1px solid var(--border);border-radius:9px;margin-bottom:7px;font-size:13px}
 @media(max-width:900px){.two,.grid2{grid-template-columns:1fr}}
