@@ -1,6 +1,7 @@
 <!doctype html><html lang="id"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Masuk — {{ nama_koperasi() }}</title><link rel="icon" href="{{ asset('logo.svg') }}">
+<link rel="manifest" href="{{ route('manifest') }}"><meta name="theme-color" content="#0e6b56">
 <link rel="stylesheet" href="{{ asset('css/app.css') }}"></head><body>
 <div class="login-wrap"><div class="login-card">
   <img src="{{ asset('logo.svg') }}" alt="Logo Koperasi">

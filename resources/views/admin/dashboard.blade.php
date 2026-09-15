@@ -11,7 +11,7 @@
     <div class="phead"><h2>Ringkasan Kas</h2></div>
     <div class="bars">
       <div class="row"><div>Kas Masuk</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="mono pos">{{ rupiah($ks['masuk']) }}</div></div>
-      <div class="row"><div>Kas Keluar</div><div class="track"><div class="fill" style="width:{{ $ks['masuk']?round($ks['keluar']/$ks['masuk']*100):0 }}%;background:linear-gradient(90deg,#c0392b,#e05a4a)"></div></div><div class="mono neg">{{ rupiah($ks['keluar']) }}</div></div>
+      <div class="row"><div>Kas Keluar</div><div class="track"><div class="fill" style="width:{{ $ks['masuk']?round($ks['keluar']/$ks['masuk']*100):0 }}%;background:linear-gradient(90deg,#b3402f,#d8654c)"></div></div><div class="mono neg">{{ rupiah($ks['keluar']) }}</div></div>
     </div>
     <div class="saldobox"><span>Saldo Kas Saat Ini</span><b class="mono">{{ rupiah($ks['saldo']) }}</b></div>
   </section>

@@ -9,6 +9,25 @@ Route::get('/login', [AuthController::class,'showLogin'])->name('login');
 Route::post('/login', [AuthController::class,'login'])->name('login.post');
 Route::post('/logout', [AuthController::class,'logout'])->name('logout');
 
+Route::get('/manifest.json', function () {
+  return response()->json([
+    'name' => nama_koperasi(),
+    'short_name' => \Illuminate\Support\Str::limit(nama_koperasi(), 15, ''),
+    'description' => 'Sistem Simpanan & Pinjaman Anggota',
+    'start_url' => '/',
+    'scope' => '/',
+    'display' => 'standalone',
+    'background_color' => '#f4f6f3',
+    'theme_color' => '#0e6b56',
+    'icons' => [
+      ['src' => asset('icons/icon-192.png'), 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'any'],
+      ['src' => asset('icons/icon-512.png'), 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any'],
+      ['src' => asset('icons/icon-192.png'), 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'maskable'],
+      ['src' => asset('icons/icon-512.png'), 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'maskable'],
+    ],
+  ])->header('Content-Type', 'application/manifest+json');
+})->name('manifest');
+
 Route::middleware('admin')->group(function () {
   Route::get('/dashboard', [DashboardController::class,'index'])->name('dashboard');
 

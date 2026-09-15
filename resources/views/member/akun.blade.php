@@ -4,12 +4,12 @@
   <section class="panel">
     <div class="phead"><h2>Data Keanggotaan</h2></div>
     <table style="font-family:inherit"><tbody>
-      <tr><td style="color:#5f6f66">No. Anggota</td><td><b class="mono">{{ $me->no_anggota }}</b></td></tr>
-      <tr><td style="color:#5f6f66">Nama</td><td>{{ $me->nama }}</td></tr>
-      <tr><td style="color:#5f6f66">Telepon</td><td>{{ $me->telepon ?: '—' }}</td></tr>
-      <tr><td style="color:#5f6f66">Alamat</td><td>{{ $me->alamat ?: '—' }}</td></tr>
-      <tr><td style="color:#5f6f66">Bergabung</td><td>{{ tgl_id($me->tgl_gabung) }}</td></tr>
-      <tr><td style="color:#5f6f66">Status</td><td><span class="pill p-ok">{{ $me->aktif?'Aktif':'Nonaktif' }}</span></td></tr>
+      <tr><td style="color:var(--muted)">No. Anggota</td><td><b class="mono">{{ $me->no_anggota }}</b></td></tr>
+      <tr><td style="color:var(--muted)">Nama</td><td>{{ $me->nama }}</td></tr>
+      <tr><td style="color:var(--muted)">Telepon</td><td>{{ $me->telepon ?: '—' }}</td></tr>
+      <tr><td style="color:var(--muted)">Alamat</td><td>{{ $me->alamat ?: '—' }}</td></tr>
+      <tr><td style="color:var(--muted)">Bergabung</td><td>{{ tgl_id($me->tgl_gabung) }}</td></tr>
+      <tr><td style="color:var(--muted)">Status</td><td><span class="pill p-ok">{{ $me->aktif?'Aktif':'Nonaktif' }}</span></td></tr>
     </tbody></table>
     <a class="btn btn-block" style="margin-top:12px" href="{{ route('cetak.kartu',$me) }}" target="_blank">{!! icon('card') !!} Cetak Kartu Anggota</a>
   </section>
