@@ -23,16 +23,15 @@ class SimpananController extends Controller
         if ($sampai) {
             $q->whereDate('tgl', '<=', $sampai);
         }
-        $filtered = $anggotaId || $dari || $sampai;
 
         return view('admin.simpanan', [
             'title' => 'Simpanan',
             'members' => Anggota::where('aktif', 1)->orderBy('no_anggota')->get(),
-            'hist' => $q->limit($filtered ? 300 : 40)->get(),
+            'hist' => $q->paginate(25)->withQueryString(),
             'anggotaId' => $anggotaId,
             'dari' => $dari,
             'sampai' => $sampai,
-            'filtered' => $filtered,
+            'filtered' => $anggotaId || $dari || $sampai,
         ]);
     }
 

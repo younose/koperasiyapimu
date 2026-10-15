@@ -30,7 +30,6 @@
       <button class="btn btn-sm">{!! icon('search') !!} Cari</button>
       @if($filtered)<a class="btn btn-sm" href="{{ route('simpanan.index') }}">Reset</a>@endif
     </form>
-    @if($filtered)<p class="note" style="padding:0 18px">Menampilkan hasil filter (maks. 300 baris terbaru yang cocok).</p>@endif
     <table><thead><tr><th>Tanggal</th><th>Anggota</th><th>Jenis</th><th class="r">Nilai</th><th></th></tr></thead><tbody>
     @forelse($hist as $s)
       <tr><td>{{ tgl_id($s->tgl) }}</td>
@@ -41,6 +40,13 @@
           <form method="post" action="{{ route('simpanan.destroy',$s) }}" style="display:inline" onsubmit="return confirm('Hapus catatan ini?')">@csrf<button class="ic d">{!! icon('trash') !!}</button></form></td></tr>
     @empty<tr><td colspan="5" class="empty">Tidak ada transaksi yang cocok.</td></tr>@endforelse
     </tbody></table>
+    @if($hist->hasPages())
+      <div class="bar" style="padding:12px 18px;justify-content:flex-end">
+        <span class="csub">Halaman {{ $hist->currentPage() }}/{{ $hist->lastPage() }} · {{ $hist->total() }} transaksi</span>
+        @if($hist->onFirstPage())<span class="btn btn-sm" style="opacity:.4">&laquo; Sebelumnya</span>@else<a class="btn btn-sm" href="{{ $hist->previousPageUrl() }}">&laquo; Sebelumnya</a>@endif
+        @if($hist->hasMorePages())<a class="btn btn-sm" href="{{ $hist->nextPageUrl() }}">Berikutnya &raquo;</a>@else<span class="btn btn-sm" style="opacity:.4">Berikutnya &raquo;</span>@endif
+      </div>
+    @endif
   </section>
 </div>
 <div class="overlay" id="mS" style="display:none"><div class="modal"><form method="post" action="{{ route('simpanan.store') }}">@csrf
