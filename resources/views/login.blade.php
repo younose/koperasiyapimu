@@ -17,5 +17,4 @@
     @if($errors->any())<div class="alert alert-err">{{ $errors->first() }}</div>@endif
     <button class="btn btn-primary btn-block" type="submit">Masuk</button>
   </form>
-  <div class="login-hint">Akun demo — Pengurus: <b>admin / admin123</b><br>Anggota: <b>AGT-001 / 1001</b></div>
 </div></div></body></html>
