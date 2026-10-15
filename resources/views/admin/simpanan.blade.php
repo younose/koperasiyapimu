@@ -20,15 +20,26 @@
   </section>
   <section class="panel np">
     <div class="phead pad"><h2>Riwayat Setor / Tarik</h2><button class="btn btn-primary btn-sm" onclick="openModal('mS')">{!! icon('plus') !!} Catat</button></div>
+    <form method="get" class="bar" style="padding:12px 18px 0">
+      <select name="anggota_id" style="flex:1;min-width:160px">
+        <option value="">— semua anggota —</option>
+        @foreach($members as $m)<option value="{{ $m->id }}" @selected($anggotaId==$m->id)>{{ $m->no_anggota }} — {{ $m->nama }}</option>@endforeach
+      </select>
+      <input type="date" name="dari" value="{{ $dari }}" title="Dari tanggal">
+      <input type="date" name="sampai" value="{{ $sampai }}" title="Sampai tanggal">
+      <button class="btn btn-sm">{!! icon('search') !!} Cari</button>
+      @if($filtered)<a class="btn btn-sm" href="{{ route('simpanan.index') }}">Reset</a>@endif
+    </form>
+    @if($filtered)<p class="note" style="padding:0 18px">Menampilkan hasil filter (maks. 300 baris terbaru yang cocok).</p>@endif
     <table><thead><tr><th>Tanggal</th><th>Anggota</th><th>Jenis</th><th class="r">Nilai</th><th></th></tr></thead><tbody>
-    @foreach($hist as $s)
+    @forelse($hist as $s)
       <tr><td>{{ tgl_id($s->tgl) }}</td>
         <td><div class="cs">{{ $s->anggota->nama ?? '-' }}</div>@if($s->catatan)<div class="csub">{{ $s->catatan }}</div>@endif</td>
         <td><span class="tag">{{ $s->jenis }}</span><span class="tag2 {{ $s->arah==='tarik'?'t-out':'t-in' }}">{{ $s->arah==='tarik'?'Tarik':'Setor' }}</span></td>
         <td class="r mono {{ $s->arah==='tarik'?'neg':'pos' }}">{{ $s->arah==='tarik'?'−':'+' }}{{ rupiah($s->jumlah) }}</td>
         <td class="r nowrap"><a class="ic" href="{{ route('cetak.bukti',$s) }}" target="_blank" title="Cetak bukti">{!! icon('print') !!}</a>
           <form method="post" action="{{ route('simpanan.destroy',$s) }}" style="display:inline" onsubmit="return confirm('Hapus catatan ini?')">@csrf<button class="ic d">{!! icon('trash') !!}</button></form></td></tr>
-    @endforeach
+    @empty<tr><td colspan="5" class="empty">Tidak ada transaksi yang cocok.</td></tr>@endforelse
     </tbody></table>
   </section>
 </div>
